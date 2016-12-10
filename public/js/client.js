@@ -5,7 +5,7 @@ var Operation = function(x, y, type) {
 }; // end Operation
 
 var displayResult = function(number){
-  $('#result').html('<p class="text-center">= '+number+'</p>');
+  $('#result').html('<p class="text-center result">= '+number+'</p>');
 }; // end displayResult
 
 var postOperation = function(object) {
