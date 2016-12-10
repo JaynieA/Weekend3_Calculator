@@ -14,6 +14,44 @@ var displayResult = function(number){
   } // end else
 }; // end displayResult
 
+var getInputNumbers = function(object, property, number) {
+  console.log('in createInputNumber');
+  if (object[property] === undefined) {
+    object[property] = number;
+  } else {
+    object[property] = object[property] + number;
+  } // end else
+}; // end createInputNumber
+
+var init = function() {
+  console.log('in init');
+  //create operation object
+  var operation = new Operation();
+  //event listeners
+  $('.btn-num').on('click', function() {
+    numberClicked = $(this).text();
+    if (operation.type === undefined) {
+      getInputNumbers(operation, 'x', numberClicked);
+    } else {
+      getInputNumbers(operation, 'y', numberClicked);
+    } // end else
+    console.log('.btn-num Clicked:',operation);
+  }); // end .btn-num onclick
+  $('.btn-type').on('click', function() {
+    operation.type = $(this).text();
+    console.log('opeartion after .btn-type', operation);
+  }); // end .btn-type onclick
+  $('#submit').on('click', function() {
+    postOperation(operation);
+    //clear input and select fields
+    $('input').val('');
+    $('select').children().first().prop('selected', true);
+  }); // end #submit onclick
+  $('#clear').on('click', function() {
+    reset(operation);
+  }); // end #clear onclick
+}; // end init
+
 var postOperation = function(object) {
   $.ajax({
     type: 'POST',
@@ -29,52 +67,18 @@ var postOperation = function(object) {
   }); // end ajax post
 }; // end postOperation
 
-$(document).ready(function() {
-  var operation = new Operation();
-  console.log('operation object on load:', operation);
+var reset = function(object) {
+  console.log('in reset');
+  //clear result displayed on DOM
+  $('#result').html('');
+  //clear values of operation
+  object.x = undefined;
+  object.y = undefined;
+  object.type = undefined;
+  //TODO: RESET THE RESULT
+  console.log('operation after reset:', object);
+}; // end reset
 
-  var reset = function() {
-    console.log('in reset');
-    //clear result displayed on DOM
-    $('#result').html('');
-    //clear values of operation
-    operation.x = undefined;
-    operation.y = undefined;
-    operation.type = undefined;
-    //TODO: RESET THE RESULT
-    console.log('operation after reset:', operation);
-  }; // end reset
-  //event listeners
-  $('.btn-num').on('click', function() {
-    console.log('number button clicked:', $(this).text());
-    if (operation.type === undefined) {
-      if (operation.x === undefined) {
-        operation.x = $(this).text();
-      } else {
-        operation.x = operation.x + $(this).text();
-      } // end else
-    } else {
-      if (operation.y === undefined) {
-        operation.y = $(this).text();
-      } else {
-        operation.y = operation.y + $(this).text();
-      } // end else
-    } // end else
-    console.log('operation after .btn-num',operation);
-  }); // end .btn-num onclick
-  $('.btn-type').on('click', function() {
-    operation.type = $(this).text();
-    console.log('opeartion after .btn-type', operation);
-  }); // end .btn-type onclick
-  $('#submit').on('click', function() {
-    console.log('submit clicked');
-    postOperation(operation);
-    //clear input and select fields
-    $('input').val('');
-    $('select').children().first().prop('selected', true);
-  }); // end #submit onclick
-  $('#clear').on('click', function() {
-    console.log('clear clicked');
-    reset();
-  }); // end #clear onclick
+$(document).ready(function() {
+  init();
 }); // end doc ready
