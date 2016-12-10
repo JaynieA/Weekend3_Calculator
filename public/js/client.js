@@ -35,14 +35,37 @@ var reset = function() {
 }; // end reset
 
 $(document).ready(function() {
+  var operation = new Operation();
+  console.log('operation object on load:', operation);
 
   //event listeners
+  $('.btn-x').on('click', function() {
+    if (operation.x === undefined) {
+      operation.x = $(this).text();
+    } else {
+      operation.x = operation.x + $(this).text();
+    }
+    console.log('operation after .btn-x',operation);
+  });
+
+  $('.btn-type').on('click', function() {
+    operation.type = $(this).text();
+    console.log('opeartion after .btn-type', operation);
+  });
+
+  $('.btn-y').on('click', function() {
+    if (operation.y === undefined) {
+      operation.y = $(this).text();
+    } else {
+      operation.y = operation.y + $(this).text();
+    }
+    console.log('operation after .btn-y', operation);
+  });
+
+
+
   $('#submit').on('click', function() {
     console.log('submit clicked');
-    var x = $('#numOneIn').val();
-    var y = $('#numTwoIn').val();
-    var type = $('#typeIn').val();
-    var operation = new Operation(x, y, type);
     postOperation(operation);
     //clear input and select fields
     $('input').val('');
