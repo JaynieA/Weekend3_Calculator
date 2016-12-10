@@ -25,8 +25,11 @@ var postOperation = function(object) {
 
 var reset = function() {
   console.log('in reset');
-  //clear input fields
+  //clear input and select fields
   $('input').val('');
+  $('select').children().first().prop('selected', true);
+  //clear result displayed on DOM
+  $('#result').html('');
   //add more logic
   //to reset the whole experience here
 }; // end reset
@@ -41,8 +44,9 @@ $(document).ready(function() {
     var type = $('#typeIn').val();
     var operation = new Operation(x, y, type);
     postOperation(operation);
-    //clear inputs
+    //clear input and select fields
     $('input').val('');
+    $('select').children().first().prop('selected', true);
   }); // end #submit onclick
 
   $('#clear').on('click', function() {
