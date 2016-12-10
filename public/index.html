@@ -6,9 +6,25 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Weekend 3 Calculator</title>
   <script src="js/vendors/jquery.min.js" charset="utf-8"></script>
+  <script src="js/vendors/bootstrap.min.js" charset="utf-8"></script>
   <script src="js/client.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="stylesheets/css/bootstrap.min.css">
 </head>
 <body>
-  <h1>Weekend 3 Calculator</h1>
+  <div class="container">
+    <h1 class="text-center">Weekend 3 Calculator</h1>
+    <form class="form-inline text-center">
+      <input type="number" placeholder="number" class="form-control" id="numOneIn">
+      <select class="form-control" id="typeIn">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="x">x</option>
+        <option value="/">/</option>
+      </select>
+      <input type="number" placeholder="number" class="form-control" id="numTwoIn">
+      <button type="button" name="button" class="btn btn-default" id="submit">Submit</button>
+      <button type="button" name="button" class="btn btn-default" id="clear">Clear</button>
+    </form>
+  </div>
 </body>
 </html>

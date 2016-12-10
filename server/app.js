@@ -13,10 +13,11 @@ app.listen(PORT, function() {
 
 app.post('/', function(req, res) {
   console.log(req.body);
+  //do logic to complete the operation here
   res.send(req.body);
 }); // end app post
 
 app.get('/get', function(req, res) {
   console.log('get landed on server');
   res.send('Hello');
-});
+}); // end app get
