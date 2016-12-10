@@ -18,6 +18,14 @@ var postOperation = function(object) {
   }); // end ajax post
 }; // end postOperation
 
+var reset = function() {
+  console.log('in reset');
+  //clear input fields
+  $('input').val('');
+  //add more logic
+  //to reset the whole experience here
+}; // end reset
+
 $(document).ready(function() {
   $.ajax({
     type: 'GET',
@@ -42,9 +50,6 @@ $(document).ready(function() {
 
   $('#clear').on('click', function() {
     console.log('clear clicked');
-    //clear input fields
-    $('input').val('');
-    //add more logic
-    //to reset the whole experience here
+    reset();
   }); // end #clear onclick
 }); // end doc ready
