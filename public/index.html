@@ -9,6 +9,7 @@
   <script src="js/vendors/bootstrap.min.js" charset="utf-8"></script>
   <script src="js/client.js" charset="utf-8"></script>
   <link rel="stylesheet" href="stylesheets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="stylesheets/css/style.css">
 </head>
 <body>
   <div class="container">
@@ -16,6 +17,7 @@
     <form class="form-inline text-center">
       <input type="number" placeholder="number" class="form-control" id="numOneIn">
       <select class="form-control" id="typeIn">
+        <option value="" disabled selected>Choose One:</option>
         <option value="+">+</option>
         <option value="-">-</option>
         <option value="x">x</option>
@@ -23,8 +25,10 @@
       </select>
       <input type="number" placeholder="number" class="form-control" id="numTwoIn">
       <button type="button" name="button" class="btn btn-default" id="submit">Submit</button>
-      <button type="button" name="button" class="btn btn-default" id="clear">Clear</button>
+
     </form>
+    <button type="button" name="button" class="btn btn-default pull-right" id="clear">Clear</button>
+    <div id="result"></div>
   </div>
 </body>
 </html>
