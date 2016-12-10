@@ -4,6 +4,10 @@ var Operation = function(x, y, type) {
   this.type = type;
 }; // end Operation
 
+var displayResult = function(number){
+  $('#result').html('<p class="text-center">= '+number+'</p>');
+}; // end displayResult
+
 var postOperation = function(object) {
   $.ajax({
     type: 'POST',
@@ -11,6 +15,7 @@ var postOperation = function(object) {
     data: object,
     success: function(response) {
       console.log('ajax post success. Response:', response);
+      displayResult(response.result);
     },
     error: function() {
       console.log('ajax error on post');
@@ -27,16 +32,6 @@ var reset = function() {
 }; // end reset
 
 $(document).ready(function() {
-  $.ajax({
-    type: 'GET',
-    url: '/get',
-    success: function(response) {
-      console.log('ajax get success. Response:', response);
-    },
-    error: function() {
-      console.log('ajax error on get');
-    }
-  }); // end ajax get
 
   //event listeners
   $('#submit').on('click', function() {
@@ -46,6 +41,8 @@ $(document).ready(function() {
     var type = $('#typeIn').val();
     var operation = new Operation(x, y, type);
     postOperation(operation);
+    //clear inputs
+    $('input').val('');
   }); // end #submit onclick
 
   $('#clear').on('click', function() {

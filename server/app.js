@@ -12,12 +12,21 @@ app.listen(PORT, function() {
 }); // end app listen
 
 app.post('/', function(req, res) {
-  console.log(req.body);
+  var operation = req.body;
+  console.log(operation);
   //do logic to complete the operation here
-  res.send(req.body);
+  var result;
+  if (operation.type === '+') {
+    console.log('addition');
+    console.log('x: ',Number(operation.x), ' y:', Number(operation.y));
+    result = Number(operation.x)+Number(operation.y);
+    console.log('result:', result);
+  } else if (operation.type === '-') {
+    console.log('subtraction');
+  } else if (operation.type === 'x') {
+    console.log('multiplication');
+  } else if (operation.type === '/') {
+    console.log('division');
+  }
+  res.send({result: result});
 }); // end app post
-
-app.get('/get', function(req, res) {
-  console.log('get landed on server');
-  res.send('Hello');
-}); // end app get
