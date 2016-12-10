@@ -5,7 +5,13 @@ var Operation = function(x, y, type) {
 }; // end Operation
 
 var displayResult = function(number){
-  $('#result').html('<p class="text-center result">= '+number+'</p>');
+  console.log('in displayResult');
+  if (number === undefined) {
+    //display message if no numbers have been entered when = is clicked
+    $('#result').html('<p class="text-center result">Calculator cannot calculate.</p>');
+  } else {
+    $('#result').html('<p class="text-center result">= ' + number + '</p>');
+  } // end else
 }; // end displayResult
 
 var postOperation = function(object) {
@@ -23,47 +29,43 @@ var postOperation = function(object) {
   }); // end ajax post
 }; // end postOperation
 
-var reset = function() {
-  console.log('in reset');
-  //clear input and select fields
-  $('input').val('');
-  $('select').children().first().prop('selected', true);
-  //clear result displayed on DOM
-  $('#result').html('');
-  //add more logic
-  //to reset the whole experience here
-}; // end reset
-
 $(document).ready(function() {
   var operation = new Operation();
   console.log('operation object on load:', operation);
 
+  var reset = function() {
+    console.log('in reset');
+    //clear result displayed on DOM
+    $('#result').html('');
+    //clear values of operation
+    operation.x = undefined;
+    operation.y = undefined;
+    operation.type = undefined;
+    //TODO: RESET THE RESULT
+    console.log('operation after reset:', operation);
+  }; // end reset
   //event listeners
-  $('.btn-x').on('click', function() {
-    if (operation.x === undefined) {
-      operation.x = $(this).text();
+  $('.btn-num').on('click', function() {
+    console.log('number button clicked:', $(this).text());
+    if (operation.type === undefined) {
+      if (operation.x === undefined) {
+        operation.x = $(this).text();
+      } else {
+        operation.x = operation.x + $(this).text();
+      } // end else
     } else {
-      operation.x = operation.x + $(this).text();
-    }
-    console.log('operation after .btn-x',operation);
-  });
-
+      if (operation.y === undefined) {
+        operation.y = $(this).text();
+      } else {
+        operation.y = operation.y + $(this).text();
+      } // end else
+    } // end else
+    console.log('operation after .btn-num',operation);
+  }); // end .btn-num onclick
   $('.btn-type').on('click', function() {
     operation.type = $(this).text();
     console.log('opeartion after .btn-type', operation);
-  });
-
-  $('.btn-y').on('click', function() {
-    if (operation.y === undefined) {
-      operation.y = $(this).text();
-    } else {
-      operation.y = operation.y + $(this).text();
-    }
-    console.log('operation after .btn-y', operation);
-  });
-
-
-
+  }); // end .btn-type onclick
   $('#submit').on('click', function() {
     console.log('submit clicked');
     postOperation(operation);
@@ -71,7 +73,6 @@ $(document).ready(function() {
     $('input').val('');
     $('select').children().first().prop('selected', true);
   }); // end #submit onclick
-
   $('#clear').on('click', function() {
     console.log('clear clicked');
     reset();
