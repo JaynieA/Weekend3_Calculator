@@ -16,17 +16,20 @@ app.post('/', function(req, res) {
   console.log(operation);
   //do logic to complete the operation here
   var result;
+  var x = Number(operation.x);
+  var y = Number(operation.y);
   if (operation.type === '+') {
-    console.log('addition');
-    console.log('x: ',Number(operation.x), ' y:', Number(operation.y));
-    result = Number(operation.x)+Number(operation.y);
-    console.log('result:', result);
+    result = x + y;
+    console.log('addition:', x , '+', y,'= ', result);
   } else if (operation.type === '-') {
-    console.log('subtraction');
+    result = x - y;
+    console.log('subtraction:', x , '-', y,'= ', result);
   } else if (operation.type === 'x') {
-    console.log('multiplication');
+    result = x * y;
+    console.log('multiplication:', x , 'x', y,'= ', result);
   } else if (operation.type === '/') {
-    console.log('division');
+    result = x / y;
+    console.log('division:', x , '/', y,'= ', result);
   }
   res.send({result: result});
 }); // end app post
