@@ -1,10 +1,73 @@
-// GLOBAL
-h1 {
-  margin-bottom: 20px;
+@import 'settings'; // GLOBAL
+//GLOBALS
+body {
+    @include background-cover($backgroundImg);
 }
-
+h1 {
+    margin-bottom: 20px;
+}
 // LAYOUT
 .display {
-  margin-top: 20px;
-  font-size: 30px;
+    margin-top: 20px;
+    font-size: 30px;
+}
+//CALCULATOR
+.calculator {
+    background-color: $background-color;
+    @include linear-gradient(lighten($background-color, 10%), darken($background-color, 5%));
+    @include box-shadow(#1A1A1A, #5C5C5C, #1F1F1F);
+    min-height: 450px;
+    width: 450px;
+    margin: 90px auto;
+    border-radius: 12px;
+    padding: 22px 20px 20px 5px;
+    .display-long {
+        padding-right: 0;
+    }
+    .text-display-here {
+        font-family: $displayFont;
+        font-size: 38px;
+        background-color: $calcDisplayBkg;
+        min-height: 65px;
+        margin: 8px auto;
+        padding: 11px 12px 0;
+        border-radius: 4px;
+        text-transform: uppercase;
+        color: $calcDisplayTxt;
+        text-align: right;
+        box-sizing: border-box;
+        border: 1px solid $calcDisplayOutline;
+        box-shadow: inset 3px 6px 15px $calcDisplayInset;
+        text-shadow: 0 -1px 1px #bdb5b4, 1px 1px 1px $calcDisplayTxtShadow;
+        @include radial-gradient($calcDisplayBkg, $calcDisplayGradient);
+    }
+    //BUTTONS
+    .btn-default {
+        min-height: 65px;
+        min-width: 85px;
+        margin: 8px auto;
+        border-radius: 12px;
+        font-size: 34px;
+        -webkit-transition: all 0.1s linear;
+        transition: all 0.1s linear;
+        @include linear-gradient($btnGradient, $white);
+        @include box-shadow($btnBoxShadowA, $white, rgba(204,198,197,.5));
+        &:focus {
+            outline: none;
+        }
+        &:hover {
+            @include linear-gradient($white, $btnGradient);
+            color: $btnTxtHover;
+        }
+    }
+    .btn-clear {
+        @include linear-gradient($accentBtn, $accentBtnDark);
+        @include box-shadow($btnBoxShadowA, $accentBtn, $accentBtnBorder);
+        border: 1px solid $accentBtnBorder;
+        color: $white;
+        &:hover {
+            @include linear-gradient($accentBtnDark, $accentBtn);
+            color: $btnGradient;
+        }
+    }
 }
