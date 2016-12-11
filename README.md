@@ -19,7 +19,7 @@ Finally, build a 'clear' button that resets the whole experience.
 Convert the input fields for the two values to Buttons. So the experience would allow the user to click on a numerical button, then a mathematical operation, then a numerical button again. Then have an equal button that sends all of the information to the server.
 
 ##PRO MODE:
-Style the whole experience using Bootstrap to resemble the design of a physical calculator. Then, include decimal points in your number logic. Finally, convert your logic to have the client side handle which mathematical operation is run. Once it determines this, it will use that to change the url or the post request to pair with a server side route that handles that type of mathematical operation. 
+Style the whole experience using Bootstrap to resemble the design of a physical calculator. Then, include decimal points in your number logic. Finally, convert your logic to have the client side handle which mathematical operation is run. Once it determines this, it will use that to change the url or the post request to pair with a server side route that handles that type of mathematical operation.
 
 #Stretch Goals
 [ ] Change results longer than 8 characters to return exponentials or a rounded result for decimals
@@ -31,9 +31,13 @@ Style the whole experience using Bootstrap to resemble the design of a physical 
 [ ] Have 'clear' button toggle between displaying 'AC' and 'C' when appropriate
 
 Further validate user input to:
+
    [ ] handle cases where user inputs an operator before a number
+
    [ ] handle cases where user clicks on the decimal button first (as the first input number)
+
    [ ] If left uncleared, allow remaining number after operation to count towards next operation if user continues
+   
    [ ] Prevent display change or submit on click if all property's aren't filled: aka '3 =, submit'
 
 #Demo
