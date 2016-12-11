@@ -32,13 +32,13 @@ Style the whole experience using Bootstrap to resemble the design of a physical 
 
 Further validate user input to:
 
-   [ ] handle cases where user inputs an operator before a number
+   * [ ] handle cases where user inputs an operator before a number
 
-   [ ] handle cases where user clicks on the decimal button first (as the first input number)
+   * [ ] handle cases where user clicks on the decimal button first (as the first input number)
 
-   [ ] If left uncleared, allow remaining number after operation to count towards next operation if user continues
-   
-   [ ] Prevent display change or submit on click if all property's aren't filled: aka '3 =, submit'
+   * [ ] If left uncleared, allow remaining number after operation to count towards next operation if user continues
+
+   * [ ] Prevent display change or submit on click if all property's aren't filled: aka '3 =, submit'
 
 #Demo
 ![Demo](public/images/demo.png?raw=true "Demo")
