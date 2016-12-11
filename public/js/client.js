@@ -20,7 +20,6 @@ var getInputNumbers = function(object, property, number) {
   if (logs) console.log('in createInputNumber');
   if (object[property] === undefined) {
     object[property] = number;
-    // $('#display').html('<p class="text-center display">' + object[property] + '</p>');
     displayResult(object[property]);
   } else {
     object[property] = object[property] + number;
@@ -52,7 +51,13 @@ var init = function() {
   }); // end .btn-num onclick
   $('.btn-type').on('click', function() {
     operation.type = $(this).text();
-    // if (logs) console.log('opeartion after .btn-type', operation);
+    //replace special html characters with recognized js operators
+    if (operation.type === '÷') {
+      operation.type = '/';
+    } else if ( operation.type === '×') {
+      operation.type = 'x';
+    }
+    if (logs) console.log('opeartion after .btn-type', operation);
   }); // end .btn-type onclick
   $('.btn-decimal').on('click', function() {
     if (operation.type === undefined) {

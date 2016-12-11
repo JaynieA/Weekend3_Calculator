@@ -1,9 +1,11 @@
-body {
-  background: url("../../images/desktop.png") no-repeat center center fixed;
+/* For Mobile Phones */
+html, body {
+  background: url("../../images/desktop.png") no-repeat top center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover; }
+  background-size: cover;
+  background-position: left; }
 
 h1 {
   margin-bottom: 20px; }
@@ -14,10 +16,12 @@ h1 {
   background-image: linear-gradient(top, #6c6c6c, #454545);
   box-shadow: 0 8px 10px 0 #1A1A1A, inset 0 4px 1px 1px #5C5C5C, inset 0 -3px 1px 1px #1F1F1F;
   min-height: 450px;
-  width: 450px;
-  margin: 25vh auto;
+  width: 85vw;
+  margin: 15vh auto 30px auto;
   border-radius: 12px;
   padding: 22px 20px 20px 5px; }
+  .calculator .col-xs-12:first-of-type {
+    padding-right: 5px; }
   .calculator .display-long {
     padding-right: 0; }
   .calculator .text-display {
@@ -48,7 +52,7 @@ h1 {
       overflow-y: hidden; }
   .calculator .btn-default {
     min-height: 65px;
-    min-width: 85px;
+    min-width: 50px;
     margin: 8px auto;
     border-radius: 12px;
     font-size: 34px;
@@ -73,5 +77,38 @@ h1 {
       background-image: -webkit-linear-gradient(top, #EBA546, #FFC48A);
       background-image: linear-gradient(top, #EBA546, #FFC48A);
       color: #f4f1ee; }
+
+@media only screen and (min-width: 360px) {
+  .calculator {
+    margin-top: 27vh; }
+    .calculator .btn-default {
+      min-width: 60px; } }
+@media only screen and (min-width: 411px) {
+  html, body {
+    background-position: left; }
+
+  .calculator {
+    width: 85vw;
+    margin-top: 30vh; }
+    .calculator .col-xs-12:first-of-type {
+      padding-right: 15px; }
+    .calculator .btn-default {
+      min-width: 60px; } }
+@media only screen and (min-width: 492px) {
+  html, body {
+    background-position: top; }
+
+  .calculator {
+    margin-top: 32vh;
+    width: 450px; }
+    .calculator .btn-default {
+      min-width: 85px; } }
+@media only screen and (min-width: 767px) {
+  html, body {
+    background-position: left; } }
+/* Desktop */
+@media only screen and (min-width: 1000px) {
+  html, body {
+    background-position: top; } }
 
 /*# sourceMappingURL=style.css.map */

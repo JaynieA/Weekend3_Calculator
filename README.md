@@ -59,7 +59,7 @@ router.post('/division', function(req, res){
 #Stretch Goals
 [ ] Change results longer than 8 characters to return exponentials or a rounded result for decimals
 
-[ ] Style calculator to be responsive
+[x] Style app to be responsive
 
 [ ] Add image or gif of final project to README
 
@@ -67,6 +67,6 @@ router.post('/division', function(req, res){
 
 Further validate user input to:
    [ ] handle cases where user inputs an operator before a number
-   [ ] handle cases where user click on the decimal button first
-   [ ] allow remaining number after operation to count towards next operation unless user presses clear
-   [ ] don't change display or allow submit on click if all property's aren't filled: aka '3 =, submit'
+   [ ] handle cases where user clicks on the decimal button first (as the first input number)
+   [ ] If left uncleared, allow remaining number after operation to count towards next operation if user continues
+   [ ] Prevent display change or submit on click if all property's aren't filled: aka '3 =, submit'

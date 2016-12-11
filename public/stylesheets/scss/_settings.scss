@@ -42,7 +42,7 @@ $backgroundImg: '../../images/desktop.png';
     box-shadow: 0 8px 10px 0 $one, inset 0 4px 1px 1px $two, inset 0 -3px 1px 1px $three;
 }
 @mixin background-cover ($url){
-    background: url($url) no-repeat center center fixed; //
+    background: url($url) no-repeat top center fixed; //
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

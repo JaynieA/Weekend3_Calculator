@@ -1,19 +1,29 @@
-@import 'settings'; // GLOBAL
+@import 'settings';
+/* For Mobile Phones */
+// iPhone 5
 //GLOBALS
-body {
+html, body {
     @include background-cover($backgroundImg);
+    background-position: left;
 }
 h1 {
     margin-bottom: 20px;
 }
 //CALCULATOR
 .calculator {
+    .col-xs-12 {
+        &:first-of-type {
+            padding-right: 5px;
+        }
+    }
     background-color: $background-color;
     @include linear-gradient(lighten($background-color, 10%), darken($background-color, 5%));
     @include box-shadow(#1A1A1A, #5C5C5C, #1F1F1F);
     min-height: 450px;
-    width: 450px;
-    margin: 25vh auto;
+    // width: 450px;
+    width: 85vw;
+    // margin: 32vh auto 30px auto;
+    margin: 15vh auto 30px auto;
     border-radius: 12px;
     padding: 22px 20px 20px 5px;
     .display-long {
@@ -43,7 +53,7 @@ h1 {
     //BUTTONS
     .btn-default {
         min-height: 65px;
-        min-width: 85px;
+        min-width: 50px;
         margin: 8px auto;
         border-radius: 12px;
         font-size: 34px;
@@ -68,5 +78,61 @@ h1 {
             @include linear-gradient($accentBtnDark, $accentBtn);
             color: $btnGradient;
         }
+    }
+}
+//iPhone 6
+@media only screen and (min-width: 360px) {
+    //CALCUATOR
+    .calculator {
+        margin-top: 27vh;
+        .btn-default {
+            min-width: 60px;
+        }
+    }
+}
+//iPhone 6 Plus
+@media only screen and (min-width: 411px) {
+    //GLOBAL
+    html, body {
+        background-position: left;
+    }
+    //CALCULATOR
+    .calculator {
+        width: 85vw;
+        margin-top: 30vh;
+        .col-xs-12 {
+            &:first-of-type {
+                padding-right: 15px;
+            }
+        }
+        //BUTTONS
+        .btn-default {
+            min-width: 60px;
+        }
+    }
+}
+//iPhone 6 Plus
+@media only screen and (min-width: 492px) {
+    html, body {
+        background-position: top;
+    }
+    .calculator {
+        margin-top: 32vh;
+        width: 450px;
+        .btn-default {
+            min-width: 85px;
+        }
+    }
+}
+//Ipad
+@media only screen and (min-width: 767px) {
+    html, body {
+        background-position: left;
+    }
+}
+/* Desktop */
+@media only screen and (min-width: 1000px){
+    html, body {
+        background-position: top;
     }
 }
