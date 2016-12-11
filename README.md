@@ -21,6 +21,7 @@ Convert the input fields for the two values to Buttons. So the experience would 
 ##PRO MODE:
 Style the whole experience using Bootstrap to resemble the design of a physical calculator. Then, include decimal points in your number logic. Finally, convert your logic to have the client side handle which mathematical operation is run. Once it determines this, it will use that to change the url or the post request to pair with a server side route that handles that type of mathematical operation. For example:
 
+```
 $.ajax({
 
     type: "POST",
@@ -34,6 +35,7 @@ $.ajax({
     }
 
 });
+```
 
 Would be on the Client side and the Server side would have something like:
 
@@ -58,3 +60,13 @@ router.post('/division', function(req, res){
 [ ] Change results longer than 8 characters to return exponentials or a rounded result for decimals
 
 [ ] Style calculator to be responsive
+
+[ ] Add image or gif of final project to README
+
+[ ] Have 'clear' button toggle between displaying 'AC' and 'C' when appropriate
+
+Further validate user input to:
+   [ ] handle cases where user inputs an operator before a number
+   [ ] handle cases where user click on the decimal button first
+   [ ] allow remaining number after operation to count towards next operation unless user presses clear
+   [ ] don't change display or allow submit on click if all property's aren't filled: aka '3 =, submit'

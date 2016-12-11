@@ -37,6 +37,7 @@ h1 {
         @include radial-gradient($calcDisplayBkg, $calcDisplayGradient);
         .display {
             margin-bottom: 0px;
+            overflow-y: hidden;
         }
     }
     //BUTTONS
@@ -46,8 +47,8 @@ h1 {
         margin: 8px auto;
         border-radius: 12px;
         font-size: 34px;
-        -webkit-transition: all 0.1s linear;
-        transition: all 0.1s linear;
+        -webkit-transition: all 0.1s ease;
+        transition: all 0.1s ease;
         @include linear-gradient($btnGradient, $white);
         @include box-shadow($btnBoxShadowA, $white, rgba(204,198,197,.5));
         &:focus {

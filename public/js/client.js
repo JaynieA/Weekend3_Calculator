@@ -36,6 +36,12 @@ var init = function() {
   $('.btn-num').on('click', function() {
     numberClicked = $(this).text();
     //TODO: pull lines 39-46 & 55-62 into a function
+    //TODO: Deal with NULL: if user enters '. / 6' , make it into: '0.0 / 6' and vice versa
+    //TODO: don't change display or allow submit on click if all property's aren't filled: aka '3 =, submit'
+    //TODO: allow reamining number after operation to count towards next operation unless user presses clear
+    //TODO: if user presses an operater first, populate x value with 0
+    //TODO: have clear button toggle between A and AC when appropriate
+    //TODO: Add a tau button!
     if (operation.type === undefined) {
       getInputNumbers(operation, 'x', numberClicked);
     } else {

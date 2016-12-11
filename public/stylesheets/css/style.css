@@ -44,15 +44,16 @@ h1 {
     background: radial-gradient(ellipse at center, #cfe0ce 47%, #bccdbb 74%);
     /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ }
     .calculator .text-display .display {
-      margin-bottom: 0px; }
+      margin-bottom: 0px;
+      overflow-y: hidden; }
   .calculator .btn-default {
     min-height: 65px;
     min-width: 85px;
     margin: 8px auto;
     border-radius: 12px;
     font-size: 34px;
-    -webkit-transition: all 0.1s linear;
-    transition: all 0.1s linear;
+    -webkit-transition: all 0.1s ease;
+    transition: all 0.1s ease;
     background-image: -webkit-linear-gradient(top, #f4f1ee, #fff);
     background-image: linear-gradient(top, #f4f1ee, #fff);
     box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.3), inset 0 4px 1px 1px #fff, inset 0 -3px 1px 1px rgba(204, 198, 197, 0.5); }
