@@ -1,4 +1,4 @@
-var logs = false;
+var logs = true;
 
 var Operation = function(x, y, type) {
   this.x = x;
@@ -35,12 +35,11 @@ var init = function() {
   //event listeners
   $('.btn-num').on('click', function() {
     numberClicked = $(this).text();
+    //TODO: pull lines 39-46 & 55-62 into a function
     if (operation.type === undefined) {
       getInputNumbers(operation, 'x', numberClicked);
-      // $('#display').html(operation.x);
     } else {
       getInputNumbers(operation, 'y', numberClicked);
-      // $('#display').html(operation.y);
     } // end else
     if (logs) console.log('.btn-num Clicked:',operation);
 
@@ -49,6 +48,14 @@ var init = function() {
     operation.type = $(this).text();
     // if (logs) console.log('opeartion after .btn-type', operation);
   }); // end .btn-type onclick
+  $('.btn-decimal').on('click', function() {
+    if (operation.type === undefined) {
+      getInputNumbers(operation, 'x', '.');
+    } else {
+      getInputNumbers(operation, 'y', '.');
+    } // end else
+    if (logs) console.log('.btn-decimal Clicked:',operation);
+  });
   $('#submit').on('click', function(){
     submit(operation);
   });
@@ -75,7 +82,7 @@ var postOperation = function(object) {
 var reset = function(object) {
   if (logs) console.log('in reset');
   //clear result displayed on DOM
-  $('#display').html('');
+  $('#display').html('<p class="display">0</p>');
   //clear values of operation
   object.x = undefined;
   object.y = undefined;
