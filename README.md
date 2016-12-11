@@ -54,6 +54,7 @@ router.post('/division', function(req, res){
 ##Above Expectations
 3 - Same as 2, but also includes: Abstraction is used in such a way that the application is modular where appropriate. Styling is used to complete the user experience in such a way that is visually appealing. Hard and Pro mode complete.
 
-##Stretch Goals
+#Stretch Goals
 [ ] Change results longer than 8 characters to return exponentials or a rounded result for decimals
+
 [ ] Style calculator to be responsive
