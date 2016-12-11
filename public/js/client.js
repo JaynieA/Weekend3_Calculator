@@ -1,7 +1,4 @@
-var logs = true;
 //TODO: refactor everything:
-    //TODO: change parameters of getUserInputNumbers to combine object and property ones -- NOPE, can't do
-    //TODO: rename displayResult to displayNumbers
 //TODO: Generate html with js loop
 //TODO: pull lines 44-48 & 63-67 into a function
 //TODO: Deal with NULL: if user enters '. / 6' , make it into: '0.0 / 6' and vice versa
@@ -9,69 +6,102 @@ var logs = true;
 //TODO: allow reamining number after operation to count towards next operation unless user presses clear
 //TODO: if user presses an operater first, populate x value with 0
 //TODO: have clear button toggle between A and AC when appropriate
-//TODO: Add a tau button!
+
+var logs = true;
+
 var Operation = function(x, y, type) {
   this.x = x;
   this.y = y;
   this.type = type;
-}; // end Operation
+}; // end Operation constuctor
+var operationObj = new Operation();
 
-var displayResult = function(number){
-  if (logs) console.log('in displayResult');
+var displayNumbers = function(number){
+  if (logs) console.log('in displayNumbers');
   if (number === undefined) {
     //display error message if no numbers have been entered when = is clicked
     $('.display').text('error');
   } else {
     $('.display').text(number);
   } // end else
-}; // end displayResult
+}; // end displayNumbers
 
-var getUserInputNumbers = function(object, property, number) {
-  if (logs) console.log('in createInputNumber');
-  if (object[property] === undefined) {
-    object[property] = number;
-    displayResult(object[property]);
+var getNumbersIn = function(property, number) {
+  if (logs) console.log('in getNumbersIn');
+  if (operationObj[property] === undefined) {
+    operationObj[property] = number;
+    displayNumbers(operationObj[property]);
   } else {
-    object[property] = object[property] + number;
-    displayResult(object[property]);
+    operationObj[property] = operationObj[property] + number;
+    displayNumbers(operationObj[property]);
   } // end else
-}; // end createInputNumber
+}; // end getNumbersIn
 
 var init = function() {
   if (logs) console.log('in init');
-  //create operation object
-  var operationObj = new Operation();
-  //event listeners
-  $('.btn-num').on('click', function() {
-    numberClicked = $(this).text();
-    if (operationObj.type === undefined) {
-      getUserInputNumbers(operationObj, 'x', numberClicked);
-    } else {
-      getUserInputNumbers(operationObj, 'y', numberClicked);
-    } // end else
-    if (logs) console.log('.btn-num Clicked:',operationObj);
-  }); // end .btn-num onclick
-  $('.btn-type').on('click', function() {
-    operationObj.type = $(this).text();
-    //replace special html characters with recognized js operators
-    if (operationObj.type === '÷') {
-      operationObj.type = '/';
-    } else if ( operationObj.type === '×') {
-      operationObj.type = 'x';
-    }
-    if (logs) console.log('opeartion after .btn-type', operationObj);
-  }); // end .btn-type onclick
-  $('#submit').on('click', function(){
-    submit(operationObj);
-  });
-  $('#clear').on('click', function() {
-    reset(operationObj);
-  }); // end #clear onclick
+  $('.btn-num').on('click', numClick);
+  $('.btn-type').on('click', operatorClick);
+  $('#submit').on('click', postOperation);
+  $('#clear').on('click', reset);
 }; // end init
 
+var numClick = function() {
+  if (logs) console.log('in numClick');
+  numberClicked = $(event.target).text();
+  if (operationObj.type === undefined) {
+    getNumbersIn('x', numberClicked);
+  } else {
+    getNumbersIn('y', numberClicked);
+  } // end else
+  if (logs) console.log('numClick:',operationObj);
+}; // end numClick
+
+var operatorClick = function() {
+  //TODO: prevent function from running if first number hasnt been entered yet
+  if (logs) console.log('in operatorClick');
+  operationObj.type = $(event.target).text();
+  //replace special html characters with recognized operators
+  //TODO: use data attributes instead
+  if (operationObj.type === '÷') {
+    operationObj.type = '/';
+  } else if ( operationObj.type === '×') {
+    operationObj.type = 'x';
+  }
+  if (logs) console.log('operatorClick', operationObj);
+}; // end operatorClick
+
+var postOperation = function() {
+  if (logs) console.log('in postOperation');
+  $.ajax({
+    type: 'POST',
+    url: setPostUrl(operationObj),
+    data: operationObj,
+    success: function(response) {
+      if (logs) console.log('ajax post success. Response:', response);
+      displayNumbers(response.result);
+    }, // end success
+    error: function() {
+      if (logs) console.log('ajax error on post');
+    } // end error
+  }); // end ajax post
+}; // end postOperation
+
+var reset = function() {
+  if (logs) console.log('in reset');
+  //clear result displayed on DOM
+  $('#display').html('<p class="display">0</p>');
+  //clear values of operation
+  operationObj.x = undefined;
+  operationObj.y = undefined;
+  operationObj.type = undefined;
+  //TODO: RESET THE RESULT
+  if (logs) console.log('operation after reset:', operationObj);
+}; // end reset
+
 var setPostUrl = function(object) {
+  if (logs) console.log('in setPostUrl');
   var url;
-  //change post url depending on operator type
+  //set url for ajax post
   switch (object.type) {
     case '/':
         url = '/division';
@@ -88,49 +118,8 @@ var setPostUrl = function(object) {
     default:
         url = '/';
   }
-  console.log('url after case switch:', url);
   return url;
-};
-
-var postOperation = function(object) {
-  if (logs) console.log('in postOperation. object type:', object.type);
-  // console.log(setPostUrl(object));
-  // setPostUrl(object);
-
-  $.ajax({
-    type: 'POST',
-    // url: '/',
-    url: setPostUrl(object),
-    data: object,
-    success: function(response) {
-      if (logs) console.log('ajax post success. Response:', response);
-      displayResult(response.result);
-    }, // end success
-    error: function() {
-      if (logs) console.log('ajax error on post');
-    } // end error
-  }); // end ajax post
-}; // end postOperation
-
-var reset = function(object) {
-  if (logs) console.log('in reset');
-  //clear result displayed on DOM
-  $('#display').html('<p class="display">0</p>');
-  //clear values of operation
-  object.x = undefined;
-  object.y = undefined;
-  object.type = undefined;
-  //TODO: RESET THE RESULT
-  if (logs) console.log('operation after reset:', object);
-}; // end reset
-
-var submit = function(object) {
-  if (logs) console.log('in submit');
-  postOperation(object);
-  //clear input and select fields
-  $('input').val('');
-  $('select').children().first().prop('selected', true);
-}; // end submit
+}; // end setPostUrl
 
 $(document).ready(function() {
   init();
