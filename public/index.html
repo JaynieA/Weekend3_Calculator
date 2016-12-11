@@ -14,99 +14,69 @@
 </head>
 <body>
   <div class="container">
-    <h1 class="text-center">Weekend 3 Calculator</h1>
-    <div class="row text-center">
-      <div class="col-sm-4">
-        <button type="button" name="button" class="btn btn-default btn-num">1</button>
-        <button type="button" name="button" class="btn btn-default btn-num">2</button>
-        <button type="button" name="button" class="btn btn-default btn-num">3</button>
-        <button type="button" name="button" class="btn btn-default btn-num">4</button>
-        <button type="button" name="button" class="btn btn-default btn-num">5</button>
-        <button type="button" name="button" class="btn btn-default btn-num">6</button>
-        <button type="button" name="button" class="btn btn-default btn-num">7</button>
-        <button type="button" name="button" class="btn btn-default btn-num">8</button>
-        <button type="button" name="button" class="btn btn-default btn-num">9</button>
-      </div>
-      <div class="col-sm-4">
-        <button type="button" name="button" class="btn btn-primary btn-type">+</button>
-        <button type="button" name="button" class="btn btn-primary btn-type">-</button>
-        <button type="button" name="button" class="btn btn-primary btn-type">x</button>
-        <button type="button" name="button" class="btn btn-primary btn-type">/</button>
-      </div>
-      <div class="col-sm-4">
-        <button type="button" name="button" class="btn btn-danger" id="submit">=</button>
-      </div>
-    </div>
-    <button type="button" name="button" class="btn btn-default pull-right" id="clear">Clear</button>
-    <div id="display"></div>
-    <!-- HALVED -->
-
     <div class="calculator text-center">
       <div class="col-sm-12">
         <div class="col-sm-3">
-          <button type="button" name="button" class="btn btn-default btn-clear">C</button>
+          <button type="button" name="button" class="btn btn-default btn-clear" id="clear">C</button>
         </div>
         <div class="col-sm-9 display-long">
-          <div  class="text-display-here">
-            text here
-          </div>
-
+          <div class="text-display" id="display"></div>
         </div>
       </div>
       <div class="col-sm-12">
         <div class="col-sm-3">
-          <button type="button" name="button" class="btn btn-default">7</button>
+          <button type="button" name="button" class="btn btn-default btn-num">7</button>
         </div>
         <div class="col-sm-3">
-          <button type="button" name="button" class="btn btn-default">8</button>
+          <button type="button" name="button" class="btn btn-default btn-num">8</button>
         </div>
         <div class="col-sm-3">
-          <button type="button" name="button" class="btn btn-default">9</button>
+          <button type="button" name="button" class="btn btn-default btn-num">9</button>
         </div>
         <div class="col-sm-3">
-          <button type="button" name="button" class="btn btn-default">/</button>
-        </div>
-      </div>
-      <div class="col-sm-12">
-        <div class="col-sm-3">
-          <button type="button" name="button" class="btn btn-default">4</button>
-        </div>
-        <div class="col-sm-3">
-          <button type="button" name="button" class="btn btn-default">5</button>
-        </div>
-        <div class="col-sm-3">
-          <button type="button" name="button" class="btn btn-default">6</button>
-        </div>
-        <div class="col-sm-3">
-          <button type="button" name="button" class="btn btn-default">x</button>
+          <button type="button" name="button" class="btn btn-default btn-type">/</button>
         </div>
       </div>
       <div class="col-sm-12">
         <div class="col-sm-3">
-          <button type="button" name="button" class="btn btn-default">1</button>
+          <button type="button" name="button" class="btn btn-default btn-num">4</button>
         </div>
         <div class="col-sm-3">
-          <button type="button" name="button" class="btn btn-default">2</button>
+          <button type="button" name="button" class="btn btn-default btn-num">5</button>
         </div>
         <div class="col-sm-3">
-          <button type="button" name="button" class="btn btn-default">3</button>
+          <button type="button" name="button" class="btn btn-default btn-num">6</button>
         </div>
         <div class="col-sm-3">
-          <button type="button" name="button" class="btn btn-default">-</button>
+          <button type="button" name="button" class="btn btn-default btn-type">x</button>
         </div>
       </div>
       <div class="col-sm-12">
         <div class="col-sm-3">
-          <button type="button" name="button" class="btn btn-default">0</button>
+          <button type="button" name="button" class="btn btn-default btn-num">1</button>
+        </div>
+        <div class="col-sm-3">
+          <button type="button" name="button" class="btn btn-default btn-num">2</button>
+        </div>
+        <div class="col-sm-3">
+          <button type="button" name="button" class="btn btn-default btn-num">3</button>
+        </div>
+        <div class="col-sm-3">
+          <button type="button" name="button" class="btn btn-default btn-type">-</button>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="col-sm-3">
+          <button type="button" name="button" class="btn btn-default btn-num">0</button>
         </div>
         <div class="col-sm-3">
           <button type="button" name="button" class="btn btn-default">.</button>
         </div>
         <div class="col-sm-3">
-          <button type="button" name="button" class="btn btn-default">+</button>
+          <button type="button" name="button" class="btn btn-default btn-type">+</button>
         </div>
         <div class="col-sm-3">
-          <button type="button" name="button" class="btn btn-default">=</button>
+          <button type="button" name="button" class="btn btn-default" id="submit">=</button>
         </div>
       </div>
     </div>

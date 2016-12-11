@@ -10,9 +10,9 @@ var displayResult = function(number){
   if (logs) console.log('in displayResult');
   if (number === undefined) {
     //display message if no numbers have been entered when = is clicked
-    $('#display').html('<p class="text-center display">Calculator cannot calculate.</p>');
+    $('#display').html('<p class="display">error</p>');
   } else {
-    $('#display').html('<p class="text-center display">' + number + '</p>');
+    $('#display').html('<p class="display">' + number + '</p>');
   } // end else
 }; // end displayResult
 

@@ -8,10 +8,6 @@ body {
 h1 {
   margin-bottom: 20px; }
 
-.display {
-  margin-top: 20px;
-  font-size: 30px; }
-
 .calculator {
   background-color: #525252;
   background-image: -webkit-linear-gradient(top, #6c6c6c, #454545);
@@ -19,14 +15,14 @@ h1 {
   box-shadow: 0 8px 10px 0 #1A1A1A, inset 0 4px 1px 1px #5C5C5C, inset 0 -3px 1px 1px #1F1F1F;
   min-height: 450px;
   width: 450px;
-  margin: 90px auto;
+  margin: 25vh auto;
   border-radius: 12px;
   padding: 22px 20px 20px 5px; }
   .calculator .display-long {
     padding-right: 0; }
-  .calculator .text-display-here {
+  .calculator .text-display {
     font-family: "Orbitron", sans-serif;
-    font-size: 38px;
+    font-size: 36px;
     background-color: #cfe0ce;
     min-height: 65px;
     margin: 8px auto;
@@ -47,6 +43,8 @@ h1 {
     /* Chrome10-25,Safari5.1-6 */
     background: radial-gradient(ellipse at center, #cfe0ce 47%, #bccdbb 74%);
     /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ }
+    .calculator .text-display .display {
+      margin-bottom: 0px; }
   .calculator .btn-default {
     min-height: 65px;
     min-width: 85px;
