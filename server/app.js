@@ -11,25 +11,41 @@ app.listen(PORT, function() {
   console.log('server listening on port', PORT);
 }); // end app listen
 
-app.post('/', function(req, res) {
+var calcResult = function(route, req){
   var operation = req.body;
-  console.log(operation);
-  //do logic to complete the operation here
-  var result;
   var x = Number(operation.x);
   var y = Number(operation.y);
-  if (operation.type === '+') {
-    result = x + y;
-    console.log('addition:', x , '+', y,'= ', result);
-  } else if (operation.type === '-') {
-    result = x - y;
-    console.log('subtraction:', x , '-', y,'= ', result);
-  } else if (operation.type === 'x') {
-    result = x * y;
-    console.log('multiplication:', x , 'x', y,'= ', result);
-  } else if (operation.type === '/') {
-    result = x / y;
-    console.log('division:', x , '/', y,'= ', result);
+  var result;
+  //do logic to complete the operation here
+  switch (route) {
+    case '/addition':
+        result = x + y;
+      break;
+    case '/subtraction':
+        result = x - y;
+      break;
+    case '/division':
+        result = x / y;
+      break;
+    case '/multiplication':
+        result = x * y;
+      break;
+    default:
+      result = 'Error';
   }
-  res.send({result: result});
-}); // end app post
+  console.log(x, route, y,'= ', result);
+  return result;
+}; // end doOperation
+//ROUTES
+app.post('/addition', function(req, res) {
+  res.send({result: calcResult('/addition', req)});
+}); // end addition post response
+app.post('/subtraction', function(req, res) {
+  res.send({result: calcResult('/subtraction', req)});
+}); // end subtraction post response
+app.post('/division', function(req, res) {
+  res.send({result: calcResult('/division', req)});
+}); // end division post response
+app.post('/multiplication', function(req, res) {
+  res.send({result: calcResult('/multiplication', req)});
+}); // end multiplication post response

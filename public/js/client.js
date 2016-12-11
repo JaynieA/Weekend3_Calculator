@@ -1,5 +1,15 @@
 var logs = true;
-
+//TODO: refactor everything:
+    //TODO: change parameters of getUserInputNumbers to combine object and property ones -- NOPE, can't do
+    //TODO: rename displayResult to displayNumbers
+//TODO: Generate html with js loop
+//TODO: pull lines 44-48 & 63-67 into a function
+//TODO: Deal with NULL: if user enters '. / 6' , make it into: '0.0 / 6' and vice versa
+//TODO: don't change display or allow submit on click if all property's aren't filled: aka '3 =, submit'
+//TODO: allow reamining number after operation to count towards next operation unless user presses clear
+//TODO: if user presses an operater first, populate x value with 0
+//TODO: have clear button toggle between A and AC when appropriate
+//TODO: Add a tau button!
 var Operation = function(x, y, type) {
   this.x = x;
   this.y = y;
@@ -9,14 +19,14 @@ var Operation = function(x, y, type) {
 var displayResult = function(number){
   if (logs) console.log('in displayResult');
   if (number === undefined) {
-    //display message if no numbers have been entered when = is clicked
-    $('#display').html('<p class="display">error</p>');
+    //display error message if no numbers have been entered when = is clicked
+    $('.display').text('error');
   } else {
-    $('#display').html('<p class="display">' + number + '</p>');
+    $('.display').text(number);
   } // end else
 }; // end displayResult
 
-var getInputNumbers = function(object, property, number) {
+var getUserInputNumbers = function(object, property, number) {
   if (logs) console.log('in createInputNumber');
   if (object[property] === undefined) {
     object[property] = number;
@@ -30,63 +40,75 @@ var getInputNumbers = function(object, property, number) {
 var init = function() {
   if (logs) console.log('in init');
   //create operation object
-  var operation = new Operation();
+  var operationObj = new Operation();
   //event listeners
   $('.btn-num').on('click', function() {
     numberClicked = $(this).text();
-    //TODO: pull lines 39-46 & 55-62 into a function
-    //TODO: Deal with NULL: if user enters '. / 6' , make it into: '0.0 / 6' and vice versa
-    //TODO: don't change display or allow submit on click if all property's aren't filled: aka '3 =, submit'
-    //TODO: allow reamining number after operation to count towards next operation unless user presses clear
-    //TODO: if user presses an operater first, populate x value with 0
-    //TODO: have clear button toggle between A and AC when appropriate
-    //TODO: Add a tau button!
-    if (operation.type === undefined) {
-      getInputNumbers(operation, 'x', numberClicked);
+    if (operationObj.type === undefined) {
+      getUserInputNumbers(operationObj, 'x', numberClicked);
     } else {
-      getInputNumbers(operation, 'y', numberClicked);
+      getUserInputNumbers(operationObj, 'y', numberClicked);
     } // end else
-    if (logs) console.log('.btn-num Clicked:',operation);
-
+    if (logs) console.log('.btn-num Clicked:',operationObj);
   }); // end .btn-num onclick
   $('.btn-type').on('click', function() {
-    operation.type = $(this).text();
+    operationObj.type = $(this).text();
     //replace special html characters with recognized js operators
-    if (operation.type === '÷') {
-      operation.type = '/';
-    } else if ( operation.type === '×') {
-      operation.type = 'x';
+    if (operationObj.type === '÷') {
+      operationObj.type = '/';
+    } else if ( operationObj.type === '×') {
+      operationObj.type = 'x';
     }
-    if (logs) console.log('opeartion after .btn-type', operation);
+    if (logs) console.log('opeartion after .btn-type', operationObj);
   }); // end .btn-type onclick
-  $('.btn-decimal').on('click', function() {
-    if (operation.type === undefined) {
-      getInputNumbers(operation, 'x', '.');
-    } else {
-      getInputNumbers(operation, 'y', '.');
-    } // end else
-    if (logs) console.log('.btn-decimal Clicked:',operation);
-  });
   $('#submit').on('click', function(){
-    submit(operation);
+    submit(operationObj);
   });
   $('#clear').on('click', function() {
-    reset(operation);
+    reset(operationObj);
   }); // end #clear onclick
 }; // end init
 
+var setPostUrl = function(object) {
+  var url;
+  //change post url depending on operator type
+  switch (object.type) {
+    case '/':
+        url = '/division';
+      break;
+    case '+':
+        url = '/addition';
+      break;
+    case '-':
+        url = '/subtraction';
+      break;
+    case 'x':
+        url = '/multiplication';
+      break;
+    default:
+        url = '/';
+  }
+  console.log('url after case switch:', url);
+  return url;
+};
+
 var postOperation = function(object) {
+  if (logs) console.log('in postOperation. object type:', object.type);
+  // console.log(setPostUrl(object));
+  // setPostUrl(object);
+
   $.ajax({
     type: 'POST',
-    url: '/',
+    // url: '/',
+    url: setPostUrl(object),
     data: object,
     success: function(response) {
       if (logs) console.log('ajax post success. Response:', response);
       displayResult(response.result);
-    },
+    }, // end success
     error: function() {
       if (logs) console.log('ajax error on post');
-    }
+    } // end error
   }); // end ajax post
 }; // end postOperation
 
