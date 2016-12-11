@@ -1,9 +1,4 @@
 //TODO: Generate html with js loop
-//TODO: pull lines 44-48 & 63-67 into a function
-//TODO: Deal with NULL: if user enters '. / 6' , make it into: '0.0 / 6' and vice versa
-//TODO: don't change display or allow submit on click if all property's aren't filled: aka '3 =, submit'
-//TODO: allow reamining number after operation to count towards next operation unless user presses clear
-//TODO: if user presses an operater first, populate x value with 0
 //TODO: have clear button toggle between A and AC when appropriate
 
 var logs = true;
@@ -14,17 +9,14 @@ var Operation =  function(x, y, type){
   this.type= undefined;
 };
 var operationObj = new Operation();
-console.log(operationObj);
 
 var displayNumbers = function(number){
-  if (logs) console.log('in displayNumbers');
-  if (number === undefined) {
-    console.log('CAUSED AN ERROR');
-    //display error message if no numbers have been entered when = is clicked
-    $('.display').text('error');
-  } else {
-    $('.display').text(number);
-  } // end else
+  if (logs) console.log('in displayNumbers', number);
+  //add a leading zero if number begins with decimal point
+  if (number[0] === '.') {
+    number = 0+number;
+  } // end if
+  $('.display').text(number);
 }; // end displayNumbers
 
 var getNumbersIn = function(property, number) {
@@ -87,6 +79,9 @@ var validateX = function() {
       if (prevResult === undefined) { rolloverX = 0; }
       operationObj.x = prevResult;
       return true;
+    case '.':
+      operationObj.x = 0.0;
+      return true;
     default: return false;
   } // end switch
 }; // end validateX
@@ -99,13 +94,18 @@ var validateY = function() {
       console.log('y is undefined');
       operationObj.y = operationObj.x;
       return true;
+    case '.':
+      operationObj.y = 0.0;
+      return true;
     default: return false;
   } // end switch
 }; // end validateY
 
 var validateInput = function(){
   console.log('in validateInput');
-  if (validateOperator()) {
+  if (operationObj.x === undefined && operationObj.y === undefined && operationObj.type === undefined) {
+    displayNumbers(0);
+  } else if (validateOperator()) {
     console.log('validated type');
   } else {
     if (validateX()) {
@@ -118,11 +118,7 @@ var validateInput = function(){
 }; // end validateInput
 
 var postOperation = function() {
-
   if (logs) console.log('in postOperation. posting: ', operationObj);
-  //display error if all properties are not defined
-  //TODO: make validateInput function::::only do error if operator not defined, otherwise populate field with 0
-  //TODO: match up display/getNumberIn to this functionality
   $.ajax({
     type: 'POST',
     url: setPostUrl(),

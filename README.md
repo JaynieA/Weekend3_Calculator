@@ -66,10 +66,10 @@ router.post('/division', function(req, res){
 [ ] Have 'clear' button toggle between displaying 'AC' and 'C' when appropriate
 
 Further validate user input to:
-   [ ] handle cases where user inputs an operator before a number
-   [ ] handle cases where user clicks on the decimal button first (as the first input number)
-   [ ] If left uncleared, allow remaining number after operation to count towards next operation if user continues
-   [ ] Prevent display change or submit on click if all property's aren't filled: aka '3 =, submit'
+   [x] handle cases where user inputs an operator before a number
+   [x] handle cases where user clicks on the decimal button first (as the first input number)
+   [x] If left uncleared, allow remaining number after operation to count towards next operation if user continues
+   [x] Prevent display change or submit on click if all properties are empty
 
 #Stretch Goals
 ![Demo](public/images/demo.png?raw=true "Demo")
