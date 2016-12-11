@@ -1,28 +1,22 @@
 //COLORS
 $background-color: #525252;
-
 $calcDisplayBkg: #cfe0ce;
 $calcDisplayGradient: #bccdbb;
 $calcDisplayTxt: darken(#626262, 5%);
 $calcDisplayTxtShadow: lighten($calcDisplayTxt, 10%);
 $calcDisplayOutline: #999999;
 $calcDisplayInset: #8B9E8B;
-
 $btnGradient: #f4f1ee;
 $white: #fff;
 $btnTxtHover: #CE8746;
 $btnBoxShadowA: rgba(0, 0, 0, .3);
-
 $accentBtn: #FFC48A;
 $accentBtnDark: #EBA546;
 $accentBtnBorder: #C28040;
-
 //FONTS
 $displayFont: 'Orbitron', sans-serif;
-
 //IMAGES
 $backgroundImg: '../../images/desktop.png';
-
 //MIXINS
 @mixin radial-gradient($colorOne, $colorTwo) {
     background: $colorOne;
@@ -42,7 +36,7 @@ $backgroundImg: '../../images/desktop.png';
     box-shadow: 0 8px 10px 0 $one, inset 0 4px 1px 1px $two, inset 0 -3px 1px 1px $three;
 }
 @mixin background-cover ($url){
-    background: url($url) no-repeat top center fixed; //
+    background: url($url) no-repeat left center fixed; //
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

@@ -1,17 +1,15 @@
 /* For Mobile Phones */
 html, body {
-  background: url("../../images/desktop.png") no-repeat top center fixed;
+  background: url("../../images/desktop.png") no-repeat left center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
-  background-position: left; }
+  background-size: cover; }
 
 h1 {
   margin-bottom: 20px; }
 
 .calculator {
-  background-color: #525252;
   background-image: -webkit-linear-gradient(top, #6c6c6c, #454545);
   background-image: linear-gradient(top, #6c6c6c, #454545);
   box-shadow: 0 8px 10px 0 #1A1A1A, inset 0 4px 1px 1px #5C5C5C, inset 0 -3px 1px 1px #1F1F1F;
