@@ -61,7 +61,7 @@ router.post('/division', function(req, res){
 
 [x] Style app to be responsive
 
-[ ] Add image or gif of final project to README
+[x] Add demo image to README
 
 [ ] Have 'clear' button toggle between displaying 'AC' and 'C' when appropriate
 
@@ -70,3 +70,6 @@ Further validate user input to:
    [ ] handle cases where user clicks on the decimal button first (as the first input number)
    [ ] If left uncleared, allow remaining number after operation to count towards next operation if user continues
    [ ] Prevent display change or submit on click if all property's aren't filled: aka '3 =, submit'
+
+#Stretch Goals
+![Demo](public/images/demo.png?raw=true "Demo")
