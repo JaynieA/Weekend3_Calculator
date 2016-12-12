@@ -53,8 +53,6 @@ Further validate user input to:
 
    * [x] Prevent submit and customize display changes until all properties needed are defined
 
-* [ ] Move input validation to happen on the server side
-
 
 #Demo
 ![Demo](public/images/demo.png?raw=true "Demo")
