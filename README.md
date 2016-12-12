@@ -63,7 +63,7 @@ router.post('/division', function(req, res){
 
 [x] Add demo image to README
 
-[ ] Have 'clear' button toggle between displaying 'AC' and 'C' when appropriate
+[x] Have 'clear' button toggle between displaying 'AC' and 'C' when appropriate
 
 Further validate user input to:
    [x] handle cases where user inputs an operator before a number

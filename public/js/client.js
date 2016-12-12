@@ -1,6 +1,3 @@
-//TODO: have clear button toggle between A and AC when appropriate
-//TODO: get rid of console.logs and logs variable
-
 var logs = false;
 var prevResult;
 
@@ -33,6 +30,9 @@ var getNumbersIn = function(property, number) {
 }; // end getNumbersIn
 
 var init = function() {
+  $('.btn').on('click', function(){
+    $('#clear').text('C');
+  }); // end .btn click
   $('.btn-num').on('click', numClick);
   $('.btn-type').on('click', operatorClick);
   $('#submit').on('click', validateInput);
@@ -81,6 +81,8 @@ var reset = function(type) {
   displayNumbers(0);
   prevResult = 0;
   operationObj = new Operation();
+  //display all clear on DOM
+  $('#clear').text('AC');
 }; // end reset
 
 var setPostUrl = function() {
