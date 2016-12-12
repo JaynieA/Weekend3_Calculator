@@ -22,6 +22,16 @@ Convert the input fields for the two values to Buttons. So the experience would 
 ##PRO MODE:
 Style the whole experience using Bootstrap to resemble the design of a physical calculator. Then, include decimal points in your number logic. Finally, convert your logic to have the client side handle which mathematical operation is run. Once it determines this, it will use that to change the url or the post request to pair with a server side route that handles that type of mathematical operation.
 
+##TECHNOLOGIES:
+* JavaScript
+* jQuery
+* Node.js
+* Express.js
+* AJAX
+* SASS
+* Bootstrap
+* HTML5
+
 #Stretch Goals
 * [x] Round results to have a max of 7 decimal places
 
@@ -42,6 +52,9 @@ Further validate user input to:
    * [x] If left uncleared, allow remaining number after operation to count towards next operation if user continues
 
    * [x] Prevent submit and customize display changes until all properties needed are defined
+
+* [ ] Move input validation to happen on the server side
+
 
 #Demo
 ![Demo](public/images/demo.png?raw=true "Demo")
