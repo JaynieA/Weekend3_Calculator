@@ -23,13 +23,15 @@ Convert the input fields for the two values to Buttons. So the experience would 
 Style the whole experience using Bootstrap to resemble the design of a physical calculator. Then, include decimal points in your number logic. Finally, convert your logic to have the client side handle which mathematical operation is run. Once it determines this, it will use that to change the url or the post request to pair with a server side route that handles that type of mathematical operation.
 
 #Stretch Goals
-[x] Round results to have a max of 7 decimal places
+* [x] Round results to have a max of 7 decimal places
 
-[x] Style app to be responsive
+* [x] Style app to be responsive
 
-[x] Add demo image to README
+* [x] Add demo image to README
 
-[x] Have 'clear' button toggle between displaying 'AC' and 'C' when appropriate
+* [x] Add gif to README
+
+* [x] Have 'clear' button toggle between displaying 'AC' and 'C' when appropriate
 
 Further validate user input to:
 
@@ -43,3 +45,5 @@ Further validate user input to:
 
 #Demo
 ![Demo](public/images/demo.png?raw=true "Demo")
+
+![Demo](public/images/demo.gif?raw=true "DemoGif")
