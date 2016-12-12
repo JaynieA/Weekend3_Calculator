@@ -1,8 +1,7 @@
-//TODO: refactor validateInput
 //TODO: have clear button toggle between A and AC when appropriate
 //TODO: get rid of console.logs and logs variable
 
-var logs = true;
+var logs = false;
 var prevResult;
 
 var Operation =  function(x, y, type){
@@ -107,25 +106,8 @@ var setPostUrl = function() {
   return url;
 }; // end setPostUrl
 
-// var validateInput = function(){
-//   console.log('in validateInput');
-//   //If user presses "=" before any other input, prevent postOperation and display 0
-//   if (operationObj.x === undefined && operationObj.y === undefined && operationObj.type === undefined) {
-//     displayNumbers(0);
-//   } else if (validateOperator()) {
-//     console.log('validated type');
-//   } else {
-//     if (validateX()) {
-//       console.log('validated x');
-//     } else if (validateY()) {
-//         console.log('validated Y');
-//     } // end else/if
-//     postOperation();
-//   } // end else
-// }; // end validateInput
-
 var validateInput = function(){
-  console.log('in validateInput');
+  if (logs) console.log('in validateInput');
   //If user presses "=" before any other input, prevent postOperation and display 0
   if (operationObj.x === undefined && operationObj.y === undefined && operationObj.type === undefined) {
     displayNumbers(0);
@@ -143,36 +125,34 @@ var validateInput = function(){
 }; // end validateInput
 
 var validateX = function() {
-  console.log('in validateX');
+  if (logs) console.log('in validateX');
   // If X is undefined: set it to the result of previous operation
   switch (operationObj.x) {
     case undefined:
       //Set prevResult to zero if no operations have been posted yet
-      if (prevResult === undefined) {
-        prevResult = 0;
-      }
+      if (prevResult === undefined) { prevResult = 0; }
       operationObj.x = prevResult;
-      return true;
+      break;
     case '.':
       operationObj.x = 0.0;
-      return true;
-    default: return false;
+      break;
+    default: //do nothing
+      break;
   } // end switch
 }; // end validateX
 
 var validateY = function() {
-  console.log('in validateY');
+  if (logs) console.log('in validateY');
   //If Y is undefined: set it to value of X
-  console.log('in validateY');
   switch (operationObj.y) {
     case undefined:
-      console.log('y is undefined');
       operationObj.y = operationObj.x;
-      return true;
+      break;
     case '.':
       operationObj.y = 0.0;
-      return true;
-    default: return false;
+      break;
+    default: //do nothing
+      break;
   } // end switch
 }; // end validateY
 
