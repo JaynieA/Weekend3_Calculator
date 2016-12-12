@@ -41,7 +41,7 @@ Further validate user input to:
 
    * [x] If left uncleared, allow remaining number after operation to count towards next operation if user continues
 
-   * [x] Prevent display change or submit on click if all property's aren't filled: aka '3 =, submit'
+   * [x] Prevent submit and customize display changes until all properties needed are defined
 
 #Demo
 ![Demo](public/images/demo.png?raw=true "Demo")
