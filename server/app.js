@@ -33,6 +33,8 @@ var calcResult = function(route, req){
     default:
       result = 'Error';
   }
+  //round result to 7 decimal places max
+  result = Number(Math.round(result+'e7')+'e-7');
   console.log(x, route, y,'= ', result);
   return result;
 }; // end doOperation
