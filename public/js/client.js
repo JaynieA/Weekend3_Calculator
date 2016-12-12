@@ -107,34 +107,43 @@ var setPostUrl = function() {
   return url;
 }; // end setPostUrl
 
+// var validateInput = function(){
+//   console.log('in validateInput');
+//   //If user presses "=" before any other input, prevent postOperation and display 0
+//   if (operationObj.x === undefined && operationObj.y === undefined && operationObj.type === undefined) {
+//     displayNumbers(0);
+//   } else if (validateOperator()) {
+//     console.log('validated type');
+//   } else {
+//     if (validateX()) {
+//       console.log('validated x');
+//     } else if (validateY()) {
+//         console.log('validated Y');
+//     } // end else/if
+//     postOperation();
+//   } // end else
+// }; // end validateInput
+
 var validateInput = function(){
   console.log('in validateInput');
   //If user presses "=" before any other input, prevent postOperation and display 0
   if (operationObj.x === undefined && operationObj.y === undefined && operationObj.type === undefined) {
     displayNumbers(0);
-  } else if (validateOperator()) {
-    console.log('validated type');
   } else {
-    if (validateX()) {
-      console.log('validated x');
-    } else if (validateY()) {
-        console.log('validated Y');
-    } // end else/if
-    postOperation();
-  } // end else
+    //If no operator is clicked, prevent postOperation and display X
+    if (operationObj.type === undefined) {
+      displayNumbers(operationObj.x);
+    } else {
+      //Validate X and Y, and post the Operation
+      validateX();
+      validateY();
+      postOperation();
+    } // end else
+  }// end else
 }; // end validateInput
 
-var validateOperator = function() {
-  //If operator is undefined: don't post operation, display X
-  switch (operationObj.type) {
-    case undefined:
-      displayNumbers(operationObj.x);
-      return true;
-    default: return false;
-  } // end switch
-}; // end validateOperator
-
 var validateX = function() {
+  console.log('in validateX');
   // If X is undefined: set it to the result of previous operation
   switch (operationObj.x) {
     case undefined:
@@ -152,6 +161,7 @@ var validateX = function() {
 }; // end validateX
 
 var validateY = function() {
+  console.log('in validateY');
   //If Y is undefined: set it to value of X
   console.log('in validateY');
   switch (operationObj.y) {
