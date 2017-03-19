@@ -1,4 +1,4 @@
-#Weekend Challenge 3: Your Own Calculator
+# Weekend Challenge 3: Your Own Calculator
 
 Welcome to your third weekend challenge!
 
@@ -16,13 +16,13 @@ Once the server receives it, build out logic to compute the numbers in 1 of 4 di
 
 Finally, build a 'clear' button that resets the whole experience.
 
-##HARD MODE:
+## HARD MODE:
 Convert the input fields for the two values to Buttons. So the experience would allow the user to click on a numerical button, then a mathematical operation, then a numerical button again. Then have an equal button that sends all of the information to the server.
 
-##PRO MODE:
+## PRO MODE:
 Style the whole experience using Bootstrap to resemble the design of a physical calculator. Then, include decimal points in your number logic. Finally, convert your logic to have the client side handle which mathematical operation is run. Once it determines this, it will use that to change the url or the post request to pair with a server side route that handles that type of mathematical operation.
 
-##TECHNOLOGIES:
+## TECHNOLOGIES:
 * JavaScript
 * jQuery
 * Node.js
@@ -32,7 +32,7 @@ Style the whole experience using Bootstrap to resemble the design of a physical 
 * Bootstrap
 * HTML5
 
-#Stretch Goals
+# Stretch Goals
 * [x] Round results to have a max of 7 decimal places
 
 * [x] Style app to be responsive
@@ -54,7 +54,7 @@ Further validate user input to:
    * [x] Prevent submit and customize display changes until all properties needed are defined
 
 
-#Demo
+# Demo
 ![Demo](public/images/demo.png?raw=true "Demo")
 
 ![Demo](public/images/demo.gif?raw=true "DemoGif")
